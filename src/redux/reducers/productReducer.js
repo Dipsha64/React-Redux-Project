@@ -4,18 +4,14 @@
 import { ActionTypes } from '../constants/action-type'
 // Its define initial state in action.Used as a object.
 const initialState = {
-    products : [{
-        id : 1,
-        title : "Mango",
-        category : "fruit"
-    }]
+    products : []
 }
 
-// FOR multiple prodction action we need to added switch case to perform which action is call.
+// FOR multiple production action we need to added switch case to perform which action is call.
 const productReducer = (state = initialState,{type,payload}) =>{
     switch (type) {
         case ActionTypes.SET_PRODUCTS:
-            return state;
+            return {...state, products : payload};
         default:
             return state;
     }
