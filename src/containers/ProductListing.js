@@ -3,6 +3,7 @@ import { useSelector , useDispatch } from "react-redux";
 import ProductComponent from "./ProductComponent";
 import axios from "axios";
 import { setProducts } from '../redux/actions/productActions';
+import styled from "styled-components";
 
 const Productlisting = () =>{
     const products = useSelector((state) => state);
@@ -21,10 +22,26 @@ const Productlisting = () =>{
     },[]);
     console.log("products...List",products);
     return(
-        <div className="ui grid container">
-            <ProductComponent/>
-        </div>
+        <>
+        <Container>
+            <div className="product-mainlist">
+                <ProductComponent/>
+            </div>
+        </Container></>
     )
 }
+
+const Container = styled.div`
+    .product-mainlist{
+        margin: 10rem;
+        margin-left:20px;
+        margin-right:20px;
+        overflow: hidden;
+        display: grid;
+        grid-gap: 20px;
+        justify-content: center;
+        grid-template-columns: repeat(4, calc(25% - 20px));
+    }
+`;
 
 export default Productlisting;
