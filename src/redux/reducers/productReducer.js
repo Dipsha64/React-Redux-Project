@@ -8,12 +8,20 @@ const initialState = {
 }
 
 // FOR multiple production action we need to added switch case to perform which action is call.
-const productReducer = (state = initialState,{type,payload}) =>{
+export const productReducer = (state = initialState,{type,payload}) =>{
     switch (type) {
         case ActionTypes.SET_PRODUCTS:
             return {...state, products : payload};
         default:
             return state;
     }
-}
-export default productReducer;
+};
+
+export const selectedProductReducer = (state={}, {type,payload}) =>{
+    switch (type) {
+        case ActionTypes.SELECTED_PRODUCT:
+            return {...state,...payload};
+        default:
+            return state;
+    }
+};

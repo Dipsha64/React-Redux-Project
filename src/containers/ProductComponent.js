@@ -1,15 +1,17 @@
 import React from "react";
 import { useSelector } from "react-redux";
 import styled from "styled-components";
+import { Link } from "react-router-dom";
 
 const ProductComponent = () =>{
-    const products = useSelector((state) => state.allProducts.products);
-    const renderList = products.map((pro)=>{
+    const productData = useSelector((state) => state.allProducts.products);
+    const renderList = productData.map((pro)=>{
         const { id, image, title, category, price } = pro;
         return(
             <>
             <Container>
             <div className="column" key={id}>
+                <Link to={`/product/${id}`}>
                 <div className="cards">
                     <div className="image"><img src={image} alt={title}/></div>
                     <div className="content">
@@ -18,6 +20,7 @@ const ProductComponent = () =>{
                         <div className="meta-category">{category}</div>
                     </div>
                 </div>
+                </Link>
             </div>
             </Container>
             </>
